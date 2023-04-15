@@ -65,7 +65,6 @@ public class UserServiceImpl implements UserService {
         user.setUserType(userTypeRepository.findByCode("user"));
         user.setId(StrUtil.uuid().replace("-", ""));
         user.setState(UserEntity.STATE_AVAILABLE);
-        user.setPassword("123456");
         user.setCreateTime(dateTime);
         user.setUpdateTime(dateTime);
         return userRepository.save(user);
