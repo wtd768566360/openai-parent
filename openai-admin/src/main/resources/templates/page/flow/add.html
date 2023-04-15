@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ChatGPT-Admin</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-form layuimini-form">
+
+    <input type="hidden" name="userId">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">用户昵称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" lay-verify="required" value="" class="layui-input" disabled>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">当前总量</label>
+        <div class="layui-input-block">
+            <input type="text" name="total" lay-verify="required" value="" class="layui-input" disabled>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">当前剩余量</label>
+        <div class="layui-input-block">
+            <input type="text" name="unused" lay-verify="required" value="" class="layui-input" disabled>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">添加量</label>
+        <div class="layui-input-block">
+            <input type="number" name="number" lay-verify="required" lay-reqtext="添加量为必填项"
+                   placeholder="请输入添加量" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认添加</button>
+        </div>
+    </div>
+
+</div>
+</div>
+<script src="/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="/js/ajax.js" charset="utf-8"></script>
+<script src="/js/page/flow/add.js" charset="utf-8"></script>
+</body>
+</html>

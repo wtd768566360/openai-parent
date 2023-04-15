@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#进入脚本的上级目录
+cd $(cd "$(dirname "$0")" && pwd)
+
+#查询模式
+MODE=0
+
+#说明
+show_usage="args: [-w -a ]"
+
+while getopts "wa" arg; do #选项后面的冒号表示该选项需要参数
+  case $arg in
+  w)
+    MODE=1 #web端
+    ;;
+  a)
+    MODE=2 #admin端
+    ;;
+  ?) #当有不认识的选项的时候arg为?
+    echo "unkonw argument"
+    echo $show_usage
+    exit 1
+    ;;
+  esac
+done
+
+#netstat -nap | grep $pid
+if [[ $MODE -eq 1 || $MODE -eq 0 ]]; then
+  echo "----------------------------------------------openai-web----------------------------------------------------------------"
+  ps -e -o pid,ppid,c,stime,tty,time,cmd | grep openai-web-0.1.0.jar | grep $OPENAI_HOME | grep -v grep
+fi
+
+if [[ $MODE -eq 2 || $MODE -eq 0 ]]; then
+  echo "----------------------------------------------openai-admin----------------------------------------------------------------"
+  ps -e -o pid,ppid,c,stime,tty,time,cmd | grep openai-admin-0.1.0.jar | grep $OPENAI_HOME | grep -v grep
+fi
+
+
+

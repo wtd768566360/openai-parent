@@ -1,0 +1,2 @@
+webpackJsonp([9],{CAub:function(e,n){},mlqX:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement,n=this._self._c||e;return n("el-container",[n("el-header",[n("MyHead")],1),this._v(" "),n("el-main",[n("MyContent")],1)],1)},staticRenderFns:[]};var a=t("VU/8")({name:"Index"},r,!1,function(e){t("CAub")},null,null);n.default=a.exports}});
+//# sourceMappingURL=9.a5c1871468e7d8c965cb.js.map

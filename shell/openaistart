@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#启动模式
+MODE=0
+
+while getopts "wa" arg; do #选项后面的冒号表示该选项需要参数
+  case $arg in
+  w)
+    MODE=1 #web
+    ;;
+  a)
+    MODE=2 #admin
+    ;;
+  ?) #当有不认识的选项的时候arg为?
+    echo "unkonw argument"
+    exit 1
+    ;;
+  esac
+done
+
+#生日快乐
+if [ $MODE -eq 1 ]; then
+  nohup java -jar $OPENAI_HOME/app/openai-web-0.1.0.jar --spring.config.location=$OPENAI_HOME/conf/application-web.yml 1>>$OPENAI_HOME/logs/web/app.log 2>&1 &
+  exit $?
+fi
+
+#爱心
+if [ $MODE -eq 2 ]; then
+  nohup java -jar $OPENAI_HOME/app/openai-admin-0.1.0.jar --spring.config.location=$OPENAI_HOME/conf/application-admin.yml 1>>$OPENAI_HOME/logs/admin/app.log 2>&1 &
+  exit $?
+fi
+
+
+
+
+
+
+

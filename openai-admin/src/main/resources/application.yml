@@ -1,0 +1,33 @@
+#端口
+server:
+  port: 8081
+  tomcat:
+    threads:
+      max: 1000
+      min-spare: 30
+    uri-encoding: UTF-8
+# 应用名称
+spring:
+  application:
+    name: openai-admin
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 150MB
+      max-request-size: 150MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://IP:端口/数据库名
+    username: 数据库账号
+    password: 数据库密码
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+openai:
+  web:
+    url: web端的地址 例如:http://127.0.0.1:8081
+  public-key: 你的RSA的公钥
+  private-key: 你的RSA的私钥

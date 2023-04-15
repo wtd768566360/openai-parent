@@ -1,0 +1,36 @@
+#!/bin/bash
+#进入脚本的上级目录
+cd $(cd "$(dirname "$0")" && pwd)
+
+MODE=0
+
+while getopts "wa" arg; do #选项后面的冒号表示该选项需要参数
+  case $arg in
+  w)
+    MODE=1 #web
+    ;;
+  a)
+    MODE=2 #admin
+    ;;
+  ?) #当有不认识的选项的时候arg为?
+    echo "unkonw argument"
+    exit 1
+    ;;
+  esac
+done
+
+
+if [ $MODE -eq 1 ]; then
+  ps -aef | grep openai-web-0.1.0.jar | grep $OPENAI_HOME | grep -v grep | awk '{print $2}' | xargs kill -9
+fi
+
+if [ $MODE -eq 2 ]; then
+  ps -aef | grep openai-admin-0.1.0.jar | grep $OPENAI_HOME | grep -v grep | awk '{print $2}' | xargs kill -9
+fi
+
+
+
+
+
+
+

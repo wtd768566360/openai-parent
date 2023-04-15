@@ -1,0 +1,57 @@
+#端口
+server:
+  port: 8080
+# 应用名称
+spring:
+  application:
+    name: openai-web
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://IP:端口/数据库名
+    username: 数据库账号
+    password: 数据库密码
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+  #  邮箱服务配置
+  mail:
+    host: "smtp.qq.com"
+    #你发送邮件的qq邮箱
+    username: "1123456789011@qq.com"
+    #你的邮箱密码
+    password: *********
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+      ##         ssl:
+      ##           enable :true
+    default-encoding: utf-8
+openai:
+  #openai的官网地址,我们使用了代理,所以使用代理地址
+  base-url: https://api.openai.com/
+  #使用科技
+  proxy:
+    enabled: true
+    host: 代理IP
+    port: 代理端口
+  api_key:
+    - 你的api-key
+    - 你的api-key
+#自定义文档访问的地址，http://localhost:8080/api-doc
+springdoc:
+  swagger-ui:
+    path: /api-doc
+    #关闭在线文档SwaggerUI
+    enabled: true
+  api-docs:
+    #关闭在线文档JSON格式数据
+    enabled: true
+  #需要扫描的包路径
+  packagesToScan: com.alone.openai.web.controller
+  #匹配的url路径
+  pathsToMatch: /**
